@@ -3,6 +3,7 @@
 #include <cmath>
 #include <iostream>
 
+// Orthodox Canonical Form
 Fixed::Fixed(void) : _rawBits(0) {
   std::cout << "Default constructor called" << std::endl;
 }
@@ -20,6 +21,7 @@ Fixed &Fixed::operator=(const Fixed &other) {
 
 Fixed::~Fixed(void) { std::cout << "Destructor called" << std::endl; }
 
+// Constructors
 Fixed::Fixed(const int value) : _rawBits(value * (1 << _fractionalBits)) {
   std::cout << "Int constructor called" << std::endl;
 }
@@ -29,6 +31,7 @@ Fixed::Fixed(const float value)
   std::cout << "Float constructor called" << std::endl;
 }
 
+// Getter, setter, and conversion
 int Fixed::getRawBits(void) const {
   std::cout << "getRawBits member function called" << std::endl;
   return _rawBits;
@@ -43,6 +46,7 @@ float Fixed::toFloat(void) const {
   return rawFloat / (1 << _fractionalBits);
 }
 
+// Comparison operators
 bool Fixed::operator>(const Fixed &rhs) const {
   return _rawBits > rhs._rawBits;
 }
@@ -62,6 +66,7 @@ bool Fixed::operator!=(const Fixed &rhs) const {
   return _rawBits != rhs._rawBits;
 }
 
+// Arithmetic operators
 Fixed Fixed::operator+(const Fixed &rhs) const {
   Fixed result;
   if (rhs._rawBits > 0 && _rawBits > INT_MAX - rhs._rawBits)
@@ -114,6 +119,7 @@ Fixed Fixed::operator/(const Fixed &rhs) const {
   return result;
 }
 
+// Increment and decrement operators
 Fixed &Fixed::operator++(void) {
   if (_rawBits < INT_MAX)
     _rawBits++;
@@ -142,6 +148,7 @@ Fixed Fixed::operator--(int) {
   return result;
 }
 
+// Min and max
 Fixed &Fixed::min(Fixed &lhs, Fixed &rhs) {
   if (lhs._rawBits <= rhs._rawBits)
     return lhs;
@@ -166,6 +173,7 @@ const Fixed &Fixed::max(const Fixed &lhs, const Fixed &rhs) {
   return rhs;
 }
 
+// Insertion operator
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed) {
   os << fixed.toFloat();
   return os;

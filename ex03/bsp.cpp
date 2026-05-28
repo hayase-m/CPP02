@@ -1,6 +1,7 @@
 #include "Point.hpp"
 
-Fixed calcCrossProduct(Point const start, Point const end, Point const point) {
+static Fixed calcCrossProduct(Point const &start, Point const &end,
+                              Point const &point) {
   return (end.getX() - start.getX()) * (point.getY() - start.getY()) -
          (end.getY() - start.getY()) * (point.getX() - start.getX());
 }

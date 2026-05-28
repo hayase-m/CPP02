@@ -6,7 +6,7 @@ Point::Point(float x, float y) : _x(x), _y(y) {}
 
 Point::Point(const Point &other) : _x(other._x), _y(other._y) {}
 
-Point &Point::operator=(const Point &other) { return *this; }
+Point &Point::operator=(const Point &) { return *this; }
 
 Point::~Point(void) {}
 

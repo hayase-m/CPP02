@@ -15,8 +15,8 @@ public:
   Point &operator=(Point const &other);
   ~Point(void);
 
-  Fixed const getX(void) const;
-  Fixed const getY(void) const;
+  Fixed getX(void) const;
+  Fixed getY(void) const;
 };
 
 bool bsp(Point const a, Point const b, Point const c, Point const point);
